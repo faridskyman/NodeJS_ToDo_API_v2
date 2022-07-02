@@ -1,0 +1,45 @@
+Setup
+------
+
+Before running this, you need to create a file "config/config.json", where the content is:
+
+{
+    "uname": "dbuser",
+    "pwd": "{your password}"
+}
+
+It is the credential to mongoDB. In config/index.js, it shows the connection string to mongodb in the cloud, you can change this to a mongodb on your local
+
+About
+-----
+This is a simple todo app, that i created based on 2 Udemy courses. which are
+a. 
+b.
+
+Flow
+----
+The Logic for the API is in: controllers/main.js
+The REST API definition is in: routes/main.js
+
+To add todo, you need to be authenticated, which JWT is used. When a call is made to API (check routes), this is the Flow
+- > routes/main.js -> middleware/auth.js -> controllers/main.js
+So all checks for auth is handle by this middleware, it validate the claims in the JWT token and then sends the claim to the controller.
+
+Error  handling
+---------------
+controller can simply throw error, and the custom-error.js will handling setting the http code to send back to user.
+
+Planning for app
+----------------
+
+1. to add roles for user (admin, user) so admin user can call api that 
+- gives ALL todo task
+- views all users
+- allows deletion of todo or users
+
+2. to implement hash for password
+
+3. implement a simple client side that consumes the API
+
+
+
